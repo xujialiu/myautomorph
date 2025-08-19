@@ -10,7 +10,7 @@ echo "### Done ###"
 # STEP 1 IMAGE PREPROCESSING (EXTRA BACKGROUND REMOVE, SQUARE)
 echo "### Image Preprocessing ###"
 # python M0_Preprocess/EyeQ_process_multiprocess.py
-python M0_Preprocess/EyeQ_process_main.py
+python M0_Preprocess/EyeQ_process_multiprocess.py
 echo "### Done ###"
 
 # STEP 2 IMAGE QUALITY ASSESSMENT
