@@ -13,7 +13,7 @@ def save_model(path, model, optimizer, stats= None):
 
 def load_model(model, experiment_path, device='cpu', with_opt=False):
     checkpoint_path = osp.join(experiment_path, 'model_checkpoint.pth')
-    checkpoint = torch.load(checkpoint_path, map_location=device)
+    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=True)
     model.load_state_dict(checkpoint['model_state_dict'])
     if with_opt:
         return model, checkpoint['stats'], checkpoint['optimizer_state_dict']

@@ -17,6 +17,10 @@ from skimage import measure
 import pandas as pd
 from skimage.morphology import remove_small_objects
 import logging
+from PIL import ImageFile
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
+
 
 AUTOMORPH_DATA = os.getenv('AUTOMORPH_DATA','..')
 
@@ -463,22 +467,6 @@ def optic_disc_centre(result_path, binary_vessel_path, artery_vein_path):
     
 
     
-def misc_measures(true_vessel_arr, pred_vessel_arr):
-    cm=confusion_matrix(true_vessel_arr, pred_vessel_arr)
-    mse = mean_squared_error(true_vessel_arr, pred_vessel_arr)
-
-    try:
-        acc=1.*(cm[0,0]+cm[1,1])/np.sum(cm)
-        sensitivity=1.*cm[1,1]/(cm[1,0]+cm[1,1])
-        specificity=1.*cm[0,0]/(cm[0,1]+cm[0,0])
-        precision=1.*cm[1,1]/(cm[1,1]+cm[0,1])
-        G = np.sqrt(sensitivity*specificity)
-        F1_score = 2*precision*sensitivity/(precision+sensitivity)
-        iou = 1.*cm[1,1]/(cm[1,0]+cm[0,1]+cm[1,1])
-        return acc, sensitivity, specificity, precision, G, F1_score, mse, iou
-    except:
-        return 0,0,0,0,0,0,0,0
-    
     
         
 def prediction_eval(model_1,model_2,model_3,model_4,model_5,model_6,model_7,model_8, test_loader):
@@ -652,7 +640,7 @@ if __name__ == '__main__':
     else:
         sys.exit('im_size should be a number or a tuple of two numbers')
 
-    data_path = f'{AUTOMORPH_DATA}/Results/M1/Good_quality/'
+    data_path = f'{AUTOMORPH_DATA}/Results/M0/images/'
 
     csv_path = 'test_all.csv'
     test_loader = get_test_dataset(data_path, csv_path=csv_path, tg_size=tg_size)
