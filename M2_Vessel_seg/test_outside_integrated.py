@@ -231,7 +231,7 @@ def segment_fundus(
                     seg_results_raw_binary_path + n_img_name + ".png",
                 )
 
-            pbar.update(imgs.shape[0])
+            pbar.update(1)
 
 
 def test_net(

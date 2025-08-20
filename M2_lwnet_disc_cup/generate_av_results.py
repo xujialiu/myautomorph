@@ -597,7 +597,7 @@ def prediction_eval(model_1,model_2,model_3,model_4,model_5,model_6,model_7,mode
                 
                 
                 
-                pbar.update(imgs.shape[0])
+                pbar.update(1)
                 
                 
 

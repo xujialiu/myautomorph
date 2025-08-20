@@ -396,7 +396,7 @@ def test_net(
                     )
                     cv2.imwrite(seg_results_raw_path + img_name[i] + ".png", img_ww)
 
-                pbar.update(imgs.shape[0])
+                pbar.update(1)
 
 
 def get_args():
