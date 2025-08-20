@@ -1,14 +1,15 @@
 import fundus_prep as prep
 import os
 import pandas as pd
-from PIL import ImageFile
 import shutil
 
-ImageFile.LOAD_TRUNCATED_IMAGES = True
 from tqdm import tqdm
 from multiprocessing import Pool, cpu_count, Manager
 from functools import partial
 import warnings
+from PIL import ImageFile
+
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 warnings.filterwarnings("ignore")
 
