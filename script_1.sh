@@ -12,13 +12,13 @@ echo "### Image Preprocessing ###"
 python M0_Preprocess/EyeQ_process_multiprocess.py
 echo "### Done ###"
 
-# STEP 2 IMAGE QUALITY ASSESSMENT
+# STEP 2 IMAGE QUALITY ASSESSMENT (the script will not affect other scripts)
 echo "### Image Quality Assessment ###"
 sh M1_Retinal_Image_quality_EyePACS/test_outside.sh
 python M1_Retinal_Image_quality_EyePACS/merge_quality_assessment.py
 echo "### Done ###"
 
-# STEP 3 OPTIC DISC & VESSEL & ARTERY/VEIN SEG
+# STEP 3 OPTIC DISC & VESSEL & ARTERY/VEIN SEG (the scripts below should run in order)
 echo "### Vessel Segmentation ###"
 sh M2_Vessel_seg/test_outside.sh
 sh M2_Artery_vein/test_outside.sh
